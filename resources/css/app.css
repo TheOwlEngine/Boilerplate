@@ -1,0 +1,299 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.max-h-0 {
+  max-height: 0;
+}
+
+/**
+ * VS theme by Andrew Lock (https://andrewlock.net)
+ * Inspired by Visual Studio syntax coloring
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+  color: #393a34;
+  font-family: "Consolas", "Bitstream Vera Sans Mono", "Courier New", Courier,
+    monospace;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  font-size: 0.9em;
+  line-height: 1.2em;
+
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+pre > code[class*="language-"] {
+  font-size: 1em;
+}
+
+pre[class*="language-"]::-moz-selection,
+pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection,
+code[class*="language-"] ::-moz-selection {
+  background: #c1def1;
+}
+
+pre[class*="language-"]::selection,
+pre[class*="language-"] ::selection,
+code[class*="language-"]::selection,
+code[class*="language-"] ::selection {
+  background: #c1def1;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+  padding: 0.2em;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  background: #f8f8f8;
+  border: 1px solid #dddddd;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #008000;
+  font-style: italic;
+}
+
+.token.namespace {
+  opacity: 0.7;
+}
+
+.token.string {
+  color: #a31515;
+}
+
+.token.punctuation,
+.token.operator {
+  color: #393a34; /* no highlight */
+}
+
+.token.url,
+.token.symbol,
+.token.number,
+.token.boolean,
+.token.variable,
+.token.constant,
+.token.inserted {
+  color: #36acaa;
+}
+
+.token.atrule,
+.token.keyword,
+.token.attr-value,
+.language-autohotkey .token.selector,
+.language-json .token.boolean,
+.language-json .token.number,
+code[class*="language-css"] {
+  color: #0000ff;
+}
+
+.token.function {
+  color: #393a34;
+}
+
+.token.deleted,
+.language-autohotkey .token.tag {
+  color: #9a050f;
+}
+
+.token.selector,
+.language-autohotkey .token.keyword {
+  color: #00009f;
+}
+
+.token.important {
+  color: #e90;
+}
+
+.token.important,
+.token.bold {
+  font-weight: bold;
+}
+
+.token.italic {
+  font-style: italic;
+}
+
+.token.class-name,
+.language-json .token.property {
+  color: #2b91af;
+}
+
+.token.tag,
+.token.selector {
+  color: #800000;
+}
+
+.token.attr-name,
+.token.property,
+.token.regex,
+.token.entity {
+  color: #ff0000;
+}
+
+.token.directive.tag .tag {
+  background: #ffff00;
+  color: #393a34;
+}
+
+/* overrides color-values for the Line Numbers plugin
+  * http://prismjs.com/plugins/line-numbers/
+  */
+.line-numbers.line-numbers .line-numbers-rows {
+  border-right-color: #a5a5a5;
+}
+
+.line-numbers .line-numbers-rows > span:before {
+  color: #2b91af;
+}
+
+/* overrides color-values for the Line Highlight plugin
+ * http://prismjs.com/plugins/line-highlight/
+ */
+.line-highlight.line-highlight {
+  background: rgba(193, 222, 241, 0.2);
+  background: -webkit-linear-gradient(
+    left,
+    rgba(193, 222, 241, 0.2) 70%,
+    rgba(221, 222, 241, 0)
+  );
+  background: linear-gradient(
+    to right,
+    rgba(193, 222, 241, 0.2) 70%,
+    rgba(221, 222, 241, 0)
+  );
+}
+
+/* Icons */
+@font-face {
+  font-family: "Owl Icons";
+  src: url("/icons/owlicons.eot?6f282e");
+  src: url("/icons/owlicons.eot?6f282e#iefix") format("embedded-opentype"),
+    url("/icons/owlicons.ttf?6f282e") format("truetype"),
+    url("/icons/owlicons.woff?6f282e") format("woff"),
+    url("/icons/owlicons.svg?6f282e#owlicons") format("svg");
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="owl-"],
+[class*=" owl-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: "Owl Icons" !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.owl-align-alt:before {
+  content: "\e900";
+}
+.owl-align-left-justify:before {
+  content: "\e901";
+}
+.owl-analysis:before {
+  content: "\e902";
+}
+.owl-angle-down:before {
+  content: "\e903";
+}
+.owl-apps:before {
+  content: "\e904";
+}
+.owl-arrow-circle-down:before {
+  content: "\e905";
+}
+.owl-arrow-circle-up:before {
+  content: "\e906";
+}
+.owl-arrow-down:before {
+  content: "\e907";
+}
+.owl-arrow-right:before {
+  content: "\e908";
+}
+.owl-bars:before {
+  content: "\e909";
+}
+.owl-browser:before {
+  content: "\e90a";
+}
+.owl-cog:before {
+  content: "\e90b";
+}
+.owl-copy-landscape:before {
+  content: "\e90c";
+}
+.owl-edit-alt:before {
+  content: "\e90d";
+}
+.owl-envelopes:before {
+  content: "\e90e";
+}
+.owl-facebook-f:before {
+  content: "\e90f";
+}
+.owl-github:before {
+  content: "\e910";
+}
+.owl-image-question:before {
+  content: "\e911";
+}
+.owl-instagram-alt:before {
+  content: "\e912";
+}
+.owl-instagram:before {
+  content: "\e913";
+}
+.owl-map-marker:before {
+  content: "\e914";
+}
+.owl-search-alt:before {
+  content: "\e915";
+}
+.owl-twitter:before {
+  content: "\e916";
+}
+.owl-user:before {
+  content: "\e917";
+}
+.owl-users-alt:before {
+  content: "\e918";
+}
+.owl-youtube:before {
+  content: "\e919";
+}
