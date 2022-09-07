@@ -70,64 +70,35 @@
       </div>
       <div class="w-full md:w-auto h-0 md:h-auto flex flex-col md:flex-row md:mt-0 overflow-hidden" x-bind:style="mobile ? { height: 'auto', padding: '10px 0' } : {}">
         @foreach ($menu->items as $index => $item)
-          <div>
-            @if (count($item['children']) > 0)
-              <div x-on:click="dropdown = (dropdown == '{{ $index }}' ? -1 : '{{ $index }}')" class="py-3 px-6 md:p-0 md:px-4 flex justify-between items-center md:block bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer {{ strpos(request()->path(), 'services') > -1 ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
-                {{ $item['label'] }} <i class="owl owl-angle-down"></i>
-              </div>
-              <div class="hidden relative md:absolute w-full px-6 md:p-4 bg-white md:max-w-xl md:rounded-xl md:shadow-lg md:mt-8 md:border" x-bind:style="{ display: dropdown == '{{ $index }}' ? 'block' : 'none' }">
-                @foreach ($item['children'] as $child)
-                  @isset($services[$child['data']['url']])
-                    <a href="{{ $child['data']['url'] }}" class="p-3 md:p-4 hover:bg-gray-50 rounded-xl flex">
-                      <div class="hidden md:block">
-                        <div class="bg-{{ $services[$child['data']['url']]['color'] }}-500 px-3 py-2 mt-1 rounded-lg">
-                          <i class="uil {{ $services[$child['data']['url']]['icon'] }} md:text-lg font-thin text-white"></i>
-                        </div>
-                      </div>
-                      <div class="md:ml-4">
-                        <div class="md:font-semibold md:mb-1 text-gray-600 md:text-gray-700">
-                          {{ $child['label'] }}
-                        </div>
-                        <div class="hidden md:block text-sm text-gray-500">
-                          {{ $services[$child['data']['url']]['excerpt'] }}
-                        </div>
-                      </div>
-                    </a>
-                  @endisset
-                @endforeach
-              </div>
-            @else
-              @php
-                $currentUrl = $item['data']['url'];
-                $currentPath = request()->path();
-                $currentActive = false;
+          @php
+            $currentUrl = $item['data']['url'];
+            $currentPath = request()->path();
+            $currentActive = false;
 
-                if ($currentPath === '' || $currentPath === '/') {
-                  if ($currentUrl === $currentPath) {
-                    $currentActive = true;
-                  }
-                } else if (strpos($currentPath, 'articles') > -1) {
-                  if ($currentUrl === '/articles') {
-                    $currentActive = true;
-                  }
-                }  else if (strpos($currentPath, 'artikel') > -1) {
-                  if ($currentUrl === '/artikel') {
-                    $currentActive = true;
-                  }
-                } else {
-                  if (strpos($currentUrl, $currentPath) > -1) {
-                    $currentActive = true;
-                  }
-                }
-              @endphp
+            if ($currentPath === '' || $currentPath === '/') {
+              if ($currentUrl === $currentPath) {
+                $currentActive = true;
+              }
+            } else if (strpos($currentPath, 'articles') > -1) {
+              if ($currentUrl === '/articles') {
+                $currentActive = true;
+              }
+            }  else if (strpos($currentPath, 'artikel') > -1) {
+              if ($currentUrl === '/artikel') {
+                $currentActive = true;
+              }
+            } else {
+              if (strpos($currentUrl, $currentPath) > -1) {
+                $currentActive = true;
+              }
+            }
+          @endphp
 
-              <a href="{{ $item['data']['url'] }}" class="py-3 px-6 md:p-0 md:px-4 flex md:inline-flex items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer relative {{ $currentActive ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
-                {{ $item['label'] }}
-              </a>
-            @endif
-          </div>
+          <a href="{{ $item['data']['url'] }}" class="py-3 px-6 md:p-0 md:px-4 flex md:inline-flex items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer relative {{ $currentActive ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
+            {{ $item['label'] }}
+          </a>
         @endforeach
-        <div x-on:click="dropdown = (dropdown == 'language-mobile' ? -1 : 'language-mobile')" class="py-3 px-6 md:p-0 md:px-4 flex md:hidden justify-between items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer {{ strpos(request()->path(), 'services') > -1 ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
+        <div x-on:click="dropdown = (dropdown == 'language-mobile' ? -1 : 'language-mobile')" class="py-3 px-6 md:p-0 md:px-4 flex md:hidden justify-between items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer">
           <span>{{ __('website.app.language') }}</span>
           <i class="owl owl-angle-down"></i>
         </div>
@@ -141,7 +112,7 @@
         </div>
       </div>
       <div class="hidden md:flex items-center relative">
-        <div x-on:click="dropdown = (dropdown == 'language-desktop' ? -1 : 'language-desktop')" class="py-3 px-6 md:p-0 md:px-4 flex justify-between items-center md:block bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer {{ strpos(request()->path(), 'services') > -1 ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
+        <div x-on:click="dropdown = (dropdown == 'language-desktop' ? -1 : 'language-desktop')" class="py-3 px-6 md:p-0 md:px-4 flex justify-between items-center md:block bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer">
           <img class="w-7 h-auto border rounded inline-flex" src="/flag/{{ app()->getLocale() == 'en' ? 'us' : app()->getLocale() }}.svg" alt="{{ app()->getLocale() }}">
           <i class="owl owl-angle-down"></i>
         </div>
@@ -200,7 +171,7 @@
           </div>
         </div>
         <div class="w-full mt-4 block md:hidden">
-          <div x-on:click="dropdown = (dropdown == 'language-mobile-footer' ? -1 : 'language-mobile-footer')" class="py-3 px-6 md:p-0 md:px-4 flex md:hidden justify-center items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer {{ strpos(request()->path(), 'services') > -1 ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
+          <div x-on:click="dropdown = (dropdown == 'language-mobile-footer' ? -1 : 'language-mobile-footer')" class="py-3 px-6 md:p-0 md:px-4 flex md:hidden justify-center items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer">
             <span>{{ __('website.app.language') }}</span>
             <i class="owl owl-angle-down"></i>
           </div>
