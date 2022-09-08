@@ -31,7 +31,7 @@ class SiteSettings extends SettingsPage
     protected function getActions(): array
     {
         return [
-            ButtonAction::make('sitemap')->action('generateSitemap')->label(__('Generate Sitemap')),
+            // ButtonAction::make('sitemap')->action('generateSitemap')->label(__('Generate Sitemap')),
         ];
     }
 

@@ -36,3 +36,13 @@ https://github.com/awcodes/filament-tiptap-editor v0.3.12
 https://github.com/ramnzys/filament-email-log v0.2.2
 https://github.com/ryangjchandler/filament-navigation v0.3.0
 https://github.com/shuvroroy/filament-spatie-laravel-backup v1.2
+
+# Screenshots
+
+|![Homepage](./screenshots/01-homepage.png)|![Detail Article](./screenshots/02-detail-article.png)|![Dashboard](./screenshots/03-dashboard.png)|
+|:---:|:---:|:---:|
+|Homepage|Detail Article|Dashboard|
+|![Categories](./screenshots/04-categories.png)|![Article Editor](./screenshots/05-article-editor.png)|![Navigation](./screenshots/06-navigation.png)|
+|Categories|Article Editor|Navigation|
+|![Navigation Editor](./screenshots/07-navigation-editor.png)|![Site Settings](./screenshots/08-site-settings.png)|![Site Backup](./screenshots/09-site-backup.png)|
+|Navigation Editor|Site Settings|Site Backup|
