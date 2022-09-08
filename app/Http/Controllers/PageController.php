@@ -195,7 +195,7 @@ class PageController extends Controller
 
             App::setlocale($previousLanguage);
 
-            $article = Post::where("slug->" . app()->getLocale(), $slug)->firstOrFail();
+            $article = Post::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
 
             function generatorCode($text)
             {
@@ -350,7 +350,7 @@ class PageController extends Controller
     public function about(Request $request)
     {
         $slug = app()->getLocale() == 'en' ? 'about' : 'tentang';
-        $article = Post::where("slug->" . app()->getLocale() . "", $slug)->firstOrFail();
+        $article = Post::where('slug->' . app()->getLocale(), $slug)->firstOrFail();
         try {
 
             return view('pages.article-detail', [
@@ -407,7 +407,7 @@ class PageController extends Controller
                     switch ($splitedRoute[0]) {
                         case 'articles':
                         case 'artikel':
-                            $detectedEntity = Post::where("slug->" . $previousLanguage . "", $splitedRoute[1])->first();
+                            $detectedEntity = Post::where('slug->' . $previousLanguage, $splitedRoute[1])->first();
 
                             if ($detectedEntity) {
                                 $detectedSlug = $detectedEntity->getTranslation('slug', $nextLanguage);
