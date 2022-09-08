@@ -195,7 +195,7 @@ class PageController extends Controller
 
             App::setlocale($previousLanguage);
 
-            $article = Post::where("slug->" . app()->getLocale() . " = '" . $slug . "'")->firstOrFail();
+            $article = Post::where("slug->" . app()->getLocale(), $slug)->firstOrFail();
 
             function generatorCode($text)
             {
@@ -329,10 +329,10 @@ class PageController extends Controller
                 return $text;
             }
 
+            $article->content = generatorToC($article->content);
             $article->content = generatorCode($article->content);
             $article->content = generatorImage($article->content);
             $article->content = preg_replace('/language-json/m', 'language-javascript', $article->content);
-            $article->content = generatorToC($article->content);
 
             return view('pages.article-detail', [
                 'page' => $this->page,

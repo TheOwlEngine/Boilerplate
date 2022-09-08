@@ -16,9 +16,9 @@
       
       @foreach ($articles as $article)
         <div class="w-full md:w-6/12 px-4 my-2">
-          <a href="{{ route('article_detail_' . app()->getLocale(), [ $article->slug ]) }}">
+          {{-- <a href="{{ route('article_detail_' . app()->getLocale(), [ $article->slug ]) }}">
             <img src="/storage/{{ $article->banner }}" class="rounded-md" alt="{{ $article->title }}" />
-          </a>
+          </a> --}}
           <div class="my-5">
             <p class="text-gray-500 text-base mb-3 mt-5">{{ $article->author->name }} • {{ $article->published_at->translatedFormat('l, d M Y') }}</p>
             <p class="text-lg md:text-xl text-gray-800 font-semibold mb-4">{{ $article->title }}</p>

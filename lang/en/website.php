@@ -13,6 +13,7 @@ return [
             'information' => [
                 'title' => 'Information',
                 'articles' => 'Articles',
+                'about' => 'About',
             ],
             'updates' => [
                 'title' => 'Updates',
@@ -21,6 +22,16 @@ return [
             ],
             'copyright' => '© 2022 The Boilerplate. All rights reserved.',
         ]
+    ],
+
+    /**
+     * Home
+     */
+    'home' => [
+        'tag' => 'Welcome to!',
+        'title' => 'The Boilerplate',
+        'subtitle' => 'This is a boilerplate that you can use to create an article site like https://owlengine.com, which is based on Laravel & Filament.',
+        'button' => 'About Filament',
     ],
 
     /**

@@ -12,6 +12,7 @@ return [
             'information' => [
                 'title' => 'Informasi',
                 'articles' => 'Artikel',
+                'about' => 'Tentang',
             ],
             'updates' => [
                 'title' => 'Pembaruan',
@@ -20,6 +21,16 @@ return [
             ],
             'copyright' => '© 2022 The Boilerplate. Semua hak dilindungi undang-undang.',
         ]
+    ],
+
+    /**
+     * Home
+     */
+    'home' => [
+        'tag' => 'Selamat datang di!',
+        'title' => 'The Boilerplate',
+        'subtitle' => 'Adalah sebuah boilerplate yang dapat anda gunakan untuk membuat sebuah situs artikel seperti pada https://owlengine.com, yang dibuat berlandaskan pada Laravel & Filament.',
+        'button' => 'Mengenai Filament',
     ],
 
     /**

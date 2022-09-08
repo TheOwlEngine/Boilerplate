@@ -139,13 +139,13 @@
   <footer class="mt-20">
     <div class="max-w-6xl mx-auto px-4 xl:px-0 2xl:px-1 mb-10">
       <div class="flex flex-wrap">
-        <div class="w-full md:w-4/12 mb-4 md:mb-0">
+        <div class="w-full md:w-5/12 mb-4 pr-20 md:mb-0">
           <img src="/images/logo.svg" class="mx-auto md:mx-0" width="158" height="40" alt="Logo OwlEngine.com">
           <p class="text-gray-500 mt-4 text-center md:text-left">
             {{ __('website.app.footer.copywriting') }}
           </p>
         </div>
-        <div class="w-1/2 md:w-2/12 text-center md:text-left py-4 md:p-0">
+        <div class="w-1/2 md:w-3/12 text-center md:text-left py-4 md:p-0">
           <p class="md:text-lg font-semibold text-gray-700">
             {{ __('website.app.footer.information.title') }}
           </p>
@@ -153,6 +153,11 @@
             <li class="text-gray-500 hover:text-orange-400 mt-2 md:mt-6">
               <a href="{{ route('article_' . app()->getLocale()) }}">
                 {{ __('website.app.footer.information.articles') }}
+              </a>
+            </li>
+            <li class="text-gray-500 hover:text-orange-400 mt-2 md:mt-6">
+              <a href="{{ route('about_' . app()->getLocale()) }}">
+                {{ __('website.app.footer.information.about') }}
               </a>
             </li>
           </ul>
