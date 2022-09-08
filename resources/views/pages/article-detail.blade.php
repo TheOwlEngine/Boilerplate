@@ -1,4 +1,4 @@
-@extends('themes.main.layouts.app')
+@extends('layouts.app')
 
 @push('styles')
   <link rel="stylesheet" href="{{ asset('/vendor/prism/prism.min.css') }}">
@@ -22,11 +22,11 @@
     <p class="text-lg text-gray-500 mb-4">{{ $article->excerpt }}</p>
     @if (app()->getLocale() == 'en')
       <a href="/switch/id" class="inline-flex gap-x-2 bg-white hover:bg-gray-50 py-2 px-4 text-md text-gray-500 text-md rounded-xl border border-gray-200">
-        <img class="w-7 h-auto border rounded" src="/flag/id.svg" alt="ID"> Baca dalam Bahasa Indonesia
+        <img class="w-7 h-auto border rounded" src="/images/flag/id.svg" alt="ID"> Baca dalam Bahasa Indonesia
       </a>
     @else
       <a href="/switch/en" class="inline-flex gap-x-2 bg-white hover:bg-gray-50 py-2 px-4 text-md text-gray-500 text-md rounded-xl border border-gray-200">
-        <img class="w-7 h-auto border rounded" src="/flag/us.svg" alt="US"> Read on English (US)
+        <img class="w-7 h-auto border rounded" src="/images/flag/us.svg" alt="US"> Read on English (US)
       </a>
     @endif
   </div>

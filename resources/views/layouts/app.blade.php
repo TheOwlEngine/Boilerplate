@@ -8,22 +8,22 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="robots" content="index, follow">
 
-  <link rel="apple-touch-icon" sizes="57x57" href="/favicon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/favicon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/favicon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/favicon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/favicon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/favicon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/favicon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/favicon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192"  href="/favicon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/favicon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
-  <link rel="manifest" href="/favicon/manifest.json">
+  <link rel="apple-touch-icon" sizes="57x57" href="/images/favicon/apple-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="/images/favicon/apple-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="/images/favicon/apple-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/images/favicon/apple-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="/images/favicon/apple-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="/images/favicon/apple-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="/images/favicon/apple-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="/images/favicon/apple-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="192x192"  href="/images/favicon/android-icon-192x192.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon/images/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/favicon/manifest.json">
   <meta name="msapplication-TileColor" content="#ffffff">
-  <meta name="msapplication-TileImage" content="/favicon/ms-icon-144x144.png">
+  <meta name="msapplication-TileImage" content="/images/favicon/ms-icon-144x144.png">
   <meta name="theme-color" content="#ffffff">
   
   <link rel="canonical" href="{{url()->current()}}" />
@@ -60,7 +60,7 @@
     <div class="px-4 max-w-7xl mx-auto sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
       <div class="w-full md:w-auto flex justify-between items-center">
         <a href="{{ route('home') }}">
-          <img src="/themes/main/image/logo.svg" width="158" height="40" alt="Logo The Owl Engine">
+          <img src="/images/logo.svg" width="158" height="40" alt="Logo The Owl Engine">
         </a>
         <div x-on:click="mobile = !mobile" class="flex md:hidden">
           <button class="text-gray-500 hover:text-gray-700 text-3xl">
@@ -69,35 +69,39 @@
         </div>
       </div>
       <div class="w-full md:w-auto h-0 md:h-auto flex flex-col md:flex-row md:mt-0 overflow-hidden" x-bind:style="mobile ? { height: 'auto', padding: '10px 0' } : {}">
-        @foreach ($menu->items as $index => $item)
-          @php
-            $currentUrl = $item['data']['url'];
-            $currentPath = request()->path();
-            $currentActive = false;
+        @if ($menu)
+          @foreach ($menu->items as $index => $item)
+            @php
+              $currentUrl = $item['data']['url'];
+              $currentPath = request()->path();
+              $currentActive = false;
 
-            if ($currentPath === '' || $currentPath === '/') {
-              if ($currentUrl === $currentPath) {
-                $currentActive = true;
+              if ($currentPath === '' || $currentPath === '/') {
+                if ($currentUrl === $currentPath) {
+                  $currentActive = true;
+                }
+              } else if (strpos($currentPath, 'articles') > -1) {
+                if ($currentUrl === '/articles') {
+                  $currentActive = true;
+                }
+              }  else if (strpos($currentPath, 'artikel') > -1) {
+                if ($currentUrl === '/artikel') {
+                  $currentActive = true;
+                }
+              } else {
+                if (strpos($currentUrl, $currentPath) > -1) {
+                  $currentActive = true;
+                }
               }
-            } else if (strpos($currentPath, 'articles') > -1) {
-              if ($currentUrl === '/articles') {
-                $currentActive = true;
-              }
-            }  else if (strpos($currentPath, 'artikel') > -1) {
-              if ($currentUrl === '/artikel') {
-                $currentActive = true;
-              }
-            } else {
-              if (strpos($currentUrl, $currentPath) > -1) {
-                $currentActive = true;
-              }
-            }
-          @endphp
+            @endphp
 
-          <a href="{{ $item['data']['url'] }}" class="py-3 px-6 md:p-0 md:px-4 flex md:inline-flex items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer relative {{ $currentActive ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
-            {{ $item['label'] }}
-          </a>
-        @endforeach
+            <a href="{{ $item['data']['url'] }}" class="py-3 px-6 md:p-0 md:px-4 flex md:inline-flex items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer relative {{ $currentActive ? 'text-orange-400 hover:text-orange-400' : 'text-gray-500 hover:text-gray-700' }}">
+              {{ $item['label'] }}
+            </a>
+          @endforeach
+        @else
+          <div class="text-gray-500">Menu item not available right now</div>
+        @endif
         <div x-on:click="dropdown = (dropdown == 'language-mobile' ? -1 : 'language-mobile')" class="py-3 px-6 md:p-0 md:px-4 flex md:hidden justify-between items-center bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer">
           <span>{{ __('website.app.language') }}</span>
           <i class="owl owl-angle-down"></i>
@@ -105,7 +109,7 @@
         <div class="hidden relative md:absolute md:top-12 w-full px-6 md:p-4 bg-white md:w-auto md:rounded-xl md:shadow-lg md:mt-4 md:border" x-bind:style="{ display: dropdown == 'language-mobile' ? 'block' : 'none' }">
           @foreach ([ 'id' => 'Bahasa Indonesia', 'en' => 'English (US)' ] as $code => $name)
             <a href="{{ route('switch', [ $code ]) }}" class="p-4 text-gray-600 hover:bg-gray-50 rounded-xl flex">
-              <img class="w-7 h-auto border rounded" src="/flag/{{ $code  == 'en' ? 'us' : $code }}.svg" alt="{{ $code }}">
+              <img class="w-7 h-auto border rounded" src="/images/flag/{{ $code  == 'en' ? 'us' : $code }}.svg" alt="{{ $code }}">
               <span class="ml-4">{{ $name }}</span>
             </a>
           @endforeach
@@ -113,13 +117,13 @@
       </div>
       <div class="hidden md:flex items-center relative">
         <div x-on:click="dropdown = (dropdown == 'language-desktop' ? -1 : 'language-desktop')" class="py-3 px-6 md:p-0 md:px-4 flex justify-between items-center md:block bg-white hover:bg-gray-50 rounded-xl md:hover:bg-transparent cursor-pointer">
-          <img class="w-7 h-auto border rounded inline-flex" src="/flag/{{ app()->getLocale() == 'en' ? 'us' : app()->getLocale() }}.svg" alt="{{ app()->getLocale() }}">
+          <img class="w-7 h-auto border rounded inline-flex" src="/images/flag/{{ app()->getLocale() == 'en' ? 'us' : app()->getLocale() }}.svg" alt="{{ app()->getLocale() }}">
           <i class="owl owl-angle-down"></i>
         </div>
         <div class="hidden relative md:absolute md:top-12 md:right-0 w-full px-6 md:p-4 bg-white md:w-64 md:rounded-xl md:shadow-lg md:mt-4 md:border" x-bind:style="{ display: dropdown == 'language-desktop' ? 'block' : 'none' }">
           @foreach ([ 'id' => 'Bahasa Indonesia', 'en' => 'English (US)' ] as $code => $name)
             <a href="{{ route('switch', [ $code ]) }}" class="p-4 text-gray-600 hover:bg-gray-50 rounded-xl flex">
-              <img class="w-7 h-auto border rounded" src="/flag/{{ $code  == 'en' ? 'us' : $code }}.svg" alt="{{ $code }}">
+              <img class="w-7 h-auto border rounded" src="/images/flag/{{ $code  == 'en' ? 'us' : $code }}.svg" alt="{{ $code }}">
               <span class="ml-4">{{ $name }}</span>
             </a>
           @endforeach
@@ -136,7 +140,7 @@
     <div class="max-w-6xl mx-auto px-4 xl:px-0 2xl:px-1 mb-10">
       <div class="flex flex-wrap">
         <div class="w-full md:w-4/12 mb-4 md:mb-0">
-          <img src="/themes/main/image/logo.svg" class="mx-auto md:mx-0" width="158" height="40" alt="Logo OwlEngine.com">
+          <img src="/images/logo.svg" class="mx-auto md:mx-0" width="158" height="40" alt="Logo OwlEngine.com">
           <p class="text-gray-500 mt-4 text-center md:text-left">
             {{ __('website.app.footer.copywriting') }}
           </p>
@@ -178,7 +182,7 @@
           <div class="hidden relative w-full px-6 md:p-4 bg-white md:w-auto md:rounded-xl md:shadow-lg md:border" x-bind:style="{ display: dropdown == 'language-mobile-footer' ? 'block' : 'none' }">
             @foreach ([ 'id' => 'Bahasa Indonesia', 'en' => 'English (US)' ] as $code => $name)
               <a href="{{ route('switch', [ $code ]) }}" class="p-4 text-gray-600 hover:bg-gray-50 rounded-xl flex">
-                <img class="w-7 h-auto border rounded" src="/flag/{{ $code  == 'en' ? 'us' : $code }}.svg" alt="{{ $code }}">
+                <img class="w-7 h-auto border rounded" src="/images/flag/{{ $code  == 'en' ? 'us' : $code }}.svg" alt="{{ $code }}">
                 <span class="ml-4">{{ $name }}</span>
               </a>
             @endforeach

@@ -1,9 +1,10 @@
 <?php
 
-namespace Themes\main\controllers;
+namespace App\Http\Controllers;
 
 use App;
 use App\Filament\Settings\SitesSettings;
+use App\Http\Controllers\Controller;
 use App\Models\Newsletter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -17,9 +18,8 @@ use Artesaos\SEOTools\Facades\TwitterCard;
 use Artesaos\SEOTools\Facades\JsonLd;
 use Session;
 use Str;
-use Parsedown;
 
-class PageController
+class PageController extends Controller
 {
     protected $menu = null;
     protected $page = null;
@@ -155,7 +155,7 @@ class PageController
      */
     public function home(Request $request)
     {
-        return view('themes.main.pages.home', [
+        return view('pages.home', [
             'page' => $this->page,
             'menu' => $this->menu,
         ]);
@@ -169,7 +169,7 @@ class PageController
         try {
             $articles = Post::whereNot('blog_category_id', 1)->where('published_at', '<=', now())->whereNot('id', 4)->orderBy('published_at', 'DESC')->get();
 
-            return view('themes.main.pages.article', [
+            return view('pages.article', [
                 'page' => $this->page,
                 'menu' => $this->menu,
                 'articles' => $articles,
@@ -334,7 +334,7 @@ class PageController
             $article->content = preg_replace('/language-json/m', 'language-javascript', $article->content);
             $article->content = generatorToC($article->content);
 
-            return view('themes.main.pages.article-detail', [
+            return view('pages.article-detail', [
                 'page' => $this->page,
                 'menu' => $this->menu,
                 'article' => $article,
@@ -353,7 +353,7 @@ class PageController
         $article = Post::where("slug->" . app()->getLocale() . "", $slug)->firstOrFail();
         try {
 
-            return view('themes.main.pages.article-detail', [
+            return view('pages.article-detail', [
                 'page' => $this->page,
                 'menu' => $this->menu,
                 'article' => $article,

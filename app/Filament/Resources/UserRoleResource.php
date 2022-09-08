@@ -3,7 +3,6 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\UserRoleResource\Pages;
-use App\Filament\Resources\UserRoleResource\RelationManagers;
 use App\Models\UserRole;
 use Filament\Forms;
 use Filament\Resources\Form;

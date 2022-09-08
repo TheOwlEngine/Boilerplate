@@ -3,11 +3,12 @@
 namespace App\Filament\Resources;
 
 use Filament\Forms;
-use Filament\Forms\Components\SpatieTagsInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
 use Filament\Resources\Table;
 use Filament\Tables;
+use Filament\Forms\Components\SpatieTagsInput;
+use Filament\Resources\Concerns\Translatable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
@@ -15,7 +16,6 @@ use Illuminate\Support\Str;
 use App\Models\Post;
 use App\Filament\Resources\PostResource\Pages;
 use App\Filament\TiptapEditor;
-use Filament\Resources\Concerns\Translatable;
 
 class PostResource extends Resource
 {

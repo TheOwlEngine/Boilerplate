@@ -1,4 +1,4 @@
-@extends('themes.main.layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <section class="py-10 md:py-20 bg-gray-50" style="background-image: url('/pattern.png');">

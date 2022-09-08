@@ -220,7 +220,7 @@ return [
     |
     */
 
-    'favicon' => '/favicon/favicon.ico',
+    'favicon' => '/images/favicon/favicon.ico',
 
     /*
     |--------------------------------------------------------------------------

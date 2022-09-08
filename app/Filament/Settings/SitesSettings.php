@@ -4,7 +4,6 @@ namespace App\Filament\Settings;
 
 use Spatie\LaravelSettings\Settings;
 
-
 class SitesSettings extends Settings
 {
     public string $site_name_en;
